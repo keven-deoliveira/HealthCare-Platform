@@ -1,1 +1,0 @@
-{"Temperature": "97", "Blood Pressure": " ", "Pulse": " ", "Oximeter": " ", "Weight": "186", "Glucometer": "120"}
