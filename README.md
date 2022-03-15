@@ -22,8 +22,8 @@ _____
 
 To access, server must first be started on the Elastic Beanstalk AWS machine using: 
 
-```python3 manage.py runserver {privateIP}:8000```,
+```python3 manage.py runserver {privateIP}:8000```
 
-can then be accessed with "http://{publicIP}:8000"
+Site can then be accessed with "http://{publicIP}:8000"
 
 > For security purposes, the IP addresses will not be displayed here.
