@@ -28,11 +28,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.getenv('SECRET_KEY')
 SECRET_KEY = get_random_secret_key()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7521fa028c4910a8df4f9d20cbffd219ad7987c4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.70.229.148']
 
 
 # Application definition
