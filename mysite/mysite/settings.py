@@ -32,7 +32,7 @@ SECRET_KEY = get_random_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.70.229.148']
+ALLOWED_HOSTS = ['52.70.229.148', '127.0.0.1']
 
 
 # Application definition

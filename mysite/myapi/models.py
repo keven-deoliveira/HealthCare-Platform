@@ -6,16 +6,18 @@ from multiselectfield import MultiSelectField
 # Create your models here.
 
 class User(models.Model):
-    userID = models.UUIDField(
+    userID = models.CharField(
         'userID',
         primary_key = True,
-        default = uuid.uuid4,
-        editable = False
+        default = " ",
+        editable = True,
+        max_length=100,
     )
     firstName = models.CharField(max_length=60)
     lastName = models.CharField(max_length=60)
     DoB = models.CharField(max_length=10)
     address = models.CharField(max_length=60)
+    email = models.CharField(default=" ", max_length=60)
     pcp = models.CharField('PCP', max_length=30)
 
     SEX = (

@@ -4,7 +4,7 @@ from .models import *
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('userID', 'firstName', 'lastName', 'DoB', 'address', 'pcp', 'sex', 'role')
+        fields = ('userID', 'firstName', 'lastName', 'DoB', 'address', 'email', 'pcp', 'sex', 'role')
 
 class BillingInfoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
