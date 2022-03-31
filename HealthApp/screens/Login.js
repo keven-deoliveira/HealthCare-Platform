@@ -1,14 +1,69 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Input, NativeBaseProvider, Button, Icon, Box, Image, AspectRatio } from 'native-base';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-//import { alignContent, flex, flexDirection, width } from '@styled-system';
+import * as Google from 'expo-auth-session/providers/google'
 
+function Login() { 
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    expoClientId: '833113095644-ciah7c3mgv07h6ri46fb48abfagoeo0q.apps.googleusercontent.com'
+  });
 
-function Login() {
-    const navigation = useNavigation();
+  var access_token;
+
+  React.useEffect(() => {
+    if (response?.type === 'success') {
+      access_token = response.authentication.accessToken;
+      checkExistingUser();
+    }
+  }, [response]);
+
+  async function checkExistingUser() {
+    const googleUser = await fetchUserGoogleInfo(access_token);
+    var googleEmail = googleUser.email;
+
+    var userList = await fetchUserList();
+    for (const user of userList) {
+      if (user.email == googleEmail) {
+        navigation.navigate("Home");
+        return;
+      }
+    }
+    navigation.navigate("Signup");
+  }
+
+  async function fetchUserGoogleInfo(token) {
+    const response = await fetch(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${token}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+    });
+  
+    return await response.json();
+  }
+
+  async function fetchUserList() {
+      const response = await fetch ('http://52.70.229.148:8000/users/', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application.json'
+      },
+    });
+
+    return await response.json()
+  }
+
+  async function logInButtonHandler() {
+    await promptAsync();
+    await checkExistingUser();
+  }
+
+  const navigation = useNavigation();
+  
   return (
     <View style={styles.container}>
       <View style={styles.Middle}>
@@ -19,73 +74,16 @@ function Login() {
         <TouchableOpacity onPress={() => navigation.navigate("Signup")} ><Text style={styles.signupText}> Sign up</Text></TouchableOpacity>
       </View>
 
-      {/* Username or Email Input Field */}
-      <View style={styles.buttonStyle}>
-        
-        <View style={styles.emailInput}>
-          <Input
-            InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="user-secret" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
-            }
-            variant="outline"
-            placeholder="Username or Email"
-            _light={{
-              placeholderTextColor: "blueGray.400",
-            }}
-            _dark={{
-              placeholderTextColor: "blueGray.50",
-            }}
-
-          />
-        </View>
-      </View>
-
-      {/* Password Input Field */}
-      <View style={styles.buttonStyleX}>
-        
-        <View style={styles.emailInput}>
-          <Input
-            InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="key" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
-            }
-            variant="outline"
-            secureTextEntry={true}
-            placeholder="Password"
-            _light={{
-              placeholderTextColor: "blueGray.400",
-            }}
-            _dark={{
-              placeholderTextColor: "blueGray.50",
-            }}
-          />
-        </View>
-      </View>
-
       {/* Button */}
       <View style={styles.buttonStyle}>
-        <Button style={styles.buttonDesign}>
-            LOGIN
+        <Button
+          style={styles.buttonDesign}
+          disabled={!request}
+          title="Login"
+          onPress={() => {promptAsync();}}> LOGIN WITH GOOGLE
         </Button>
+
+
       </View>
     </View>
   );
@@ -135,7 +133,9 @@ const styles = StyleSheet.create({
   buttonStyle:{
     marginTop:30,
     marginLeft:15,
-    marginRight:15
+    marginRight:15,
+    alignItems:'center',
+    justifyContent: 'center'
   },
   buttonStyleX:{
     marginTop:12,

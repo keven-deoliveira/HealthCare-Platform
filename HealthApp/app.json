@@ -3,6 +3,7 @@
     "name": "HealthApp",
     "slug": "HealthApp",
     "version": "1.0.0",
+    "scheme": "testing",
     "assetBundlePatterns": [
       "**/*"
     ]

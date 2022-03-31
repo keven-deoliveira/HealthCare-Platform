@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Input, NativeBaseProvider, Button, Icon, Select, Box, Image, AspectRatio } from 'native-base';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-//import { alignContent, flex, flexDirection, width } from '@styled-system';
 
 import hex_sha1 from '../functions/SHA1';
 
@@ -24,7 +23,7 @@ function Signup() {
         var lastName = fullName[1]
     
         var data = {
-            "userID": hex_sha1(password),
+            "userID": hex_sha1(email),
             "firstName": firstName,
             "lastName": lastName,
             "DoB": "_",
@@ -120,7 +119,7 @@ function Signup() {
         </View>
       </View>
 
-      {/* Password Input Field */}
+      {/* Password Input Field
       <View style={styles.buttonStyleX}>
         
         <View style={styles.emailInput}>
@@ -151,7 +150,7 @@ function Signup() {
             onChangeText={setPassword}
           />
         </View>
-      </View>
+      </View> */}
 
       {/* Sex Input Field */}
       <View style={styles.buttonStyleX}>
@@ -227,7 +226,6 @@ function Signup() {
         </Button>
       </View>
 
-      <Text>{name}{'\n'}{email}{'\n'}{password}{'\n'}{hex_sha1(password)}{'\n'}{sex}{'\n'}{role}</Text>
     </View>
   );
 }
