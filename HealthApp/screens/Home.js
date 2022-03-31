@@ -4,7 +4,6 @@ import { Input, NativeBaseProvider } from 'native-base';
 
 export default function Home({ route, navigation }) {
     const user = route.params
-    console.log(user)
     return (
         <NativeBaseProvider>
             <View style={styles.container}>
