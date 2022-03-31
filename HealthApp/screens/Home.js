@@ -1,25 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Input, NativeBaseProvider, Button, Icon, Select, Box, Image, AspectRatio } from 'native-base';
-import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { Input, NativeBaseProvider } from 'native-base';
 
-function Home() {
-    const navigation = useNavigation();
-    return (
-        <View>
-            <Text style={{paddingTop:200, paddingLeft:100, alignItems:'center', justifyContent:'center'}}>HELLO WELCOME HOME</Text>
-        </View>
-    )
-}
-
-export default () => {
+export default function Home({ route, navigation }) {
+    const user = route.params
+    console.log(user)
     return (
         <NativeBaseProvider>
-
-            <Home />
-            
+            <View style={styles.container}>
+                <Text style={styles.header}>Hello, {user.firstName}.</Text>
+            </View>
         </NativeBaseProvider>
     )
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    header: {
+        paddingTop: 100,
+        fontWeight: 'bold',
+        fontSize: 30,
+        alignSelf: 'flex-start',
+    },
+});

@@ -1,17 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Input, NativeBaseProvider, Button, Icon, Select, Box, Image, AspectRatio } from 'native-base';
+import { Input, NativeBaseProvider, Button, Icon, Select } from 'native-base';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 
 import hex_sha1 from '../functions/SHA1';
 
-
-function Signup() {
+export default function Signup({ navigation }) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
     const [sex, setSex] = useState("")
     const [role, setRole] = useState("")
     
@@ -44,201 +40,160 @@ function Signup() {
         })
     }
 
-    const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-      <View style={styles.Middle}>
-        <Text style={styles.LoginText}>Signup</Text>
-      </View>
-      <View style={styles.text2}>
-        <Text>Already have account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")} ><Text style={styles.signupText}> Login </Text></TouchableOpacity>
-      </View>
-
-      {/* Name Input */}
-      <View style={styles.buttonStyle}>
-        
-        <View style={styles.emailInput}>
-          <Input
-            InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="user-secret" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
-            }
-            variant="outline"
-            placeholder="Name"
-            _light={{
-              placeholderTextColor: "blueGray.400",
-            }}
-            _dark={{
-              placeholderTextColor: "blueGray.50",
-            }}
-            value={name}
-            onChangeText={setName}
-          />
+    <NativeBaseProvider>
+      <View style={styles.container}>
+        <View style={styles.Middle}>
+          <Text style={styles.LoginText}>Signup</Text>
         </View>
-      </View>
-
-      {/* Email Input Field */}
-      <View style={styles.buttonStyleX}>
-        
-        <View style={styles.emailInput}>
-          <Input
-            InputLeftElement={
-              <Icon
-                as={<MaterialCommunityIcons name="email" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
-            }
-            variant="outline"
-            placeholder="Email"
-            _light={{
-              placeholderTextColor: "blueGray.400",
-            }}
-            _dark={{
-              placeholderTextColor: "blueGray.50",
-            }}
-            value={email}
-            onChangeText={setEmail}
-          />
+        <View style={styles.text2}>
+          <Text>Already have account? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Login")} ><Text style={styles.signupText}> Login </Text></TouchableOpacity>
         </View>
-      </View>
 
-      {/* Password Input Field
-      <View style={styles.buttonStyleX}>
-        
-        <View style={styles.emailInput}>
-          <Input
-            InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="key" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
-            }
-            variant="outline"
-            secureTextEntry={true}
-            placeholder="Password"
-            _light={{
-              placeholderTextColor: "blueGray.400",
-            }}
-            _dark={{
-              placeholderTextColor: "blueGray.50",
-            }}
-            value={password}
-            onChangeText={setPassword}
-          />
+        {/* Name Input */}
+        <View style={styles.buttonStyle}>
+          
+          <View style={styles.emailInput}>
+            <Input
+              InputLeftElement={
+                <Icon
+                  as={<FontAwesome5 name="user-secret" />}
+                  size="sm"
+                  m={2}
+                  _light={{
+                    color: "black",
+                  }}
+                  _dark={{
+                    color: "gray.300",
+                  }}
+                />
+              }
+              variant="outline"
+              placeholder="Name"
+              _light={{
+                placeholderTextColor: "blueGray.400",
+              }}
+              _dark={{
+                placeholderTextColor: "blueGray.50",
+              }}
+              value={name}
+              onChangeText={setName}
+            />
+          </View>
         </View>
-      </View> */}
 
-      {/* Sex Input Field */}
-      <View style={styles.buttonStyleX}>
-        
-        <View style={styles.emailInput}>
-          <Select selectedValue={sex}
-            InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="key" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
-            }
-            variant="outline"
-            placeholder="Sex"
-            _light={{
-              placeholderTextColor: "blueGray.400",
-            }}
-            _dark={{
-              placeholderTextColor: "blueGray.50",
-            }}
-            onValueChange={itemValue => setSex(itemValue)}>
-            <Select.Item label="Male" value="M" />
-            <Select.Item label="Female" value="F" />
-            <Select.Item label="Other" value="O" />
-          </Select>
+        {/* Email Input Field */}
+        <View style={styles.buttonStyleX}>
+          
+          <View style={styles.emailInput}>
+            <Input
+              InputLeftElement={
+                <Icon
+                  as={<MaterialCommunityIcons name="email" />}
+                  size="sm"
+                  m={2}
+                  _light={{
+                    color: "black",
+                  }}
+                  _dark={{
+                    color: "gray.300",
+                  }}
+                />
+              }
+              variant="outline"
+              placeholder="Email"
+              _light={{
+                placeholderTextColor: "blueGray.400",
+              }}
+              _dark={{
+                placeholderTextColor: "blueGray.50",
+              }}
+              value={email}
+              onChangeText={setEmail}
+            />
+          </View>
         </View>
-      </View>
 
-      {/* Sex Input Field */}
-      <View style={styles.buttonStyleX}>
-        
-        <View style={styles.emailInput}>
-          <Select selectedValue={role}
-            InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="key" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
-            }
-            variant="outline"
-            placeholder="Role"
-            _light={{
-              placeholderTextColor: "blueGray.400",
-            }}
-            _dark={{
-              placeholderTextColor: "blueGray.50",
-            }}
-            onValueChange={itemValue => setRole(itemValue)}>
-            <Select.Item label="Patient" value="P" />
-            <Select.Item label="Provider" value="D" />
-          </Select>
+        {/* Sex Input Field */}
+        <View style={styles.buttonStyleX}>
+          
+          <View style={styles.emailInput}>
+            <Select selectedValue={sex}
+              InputLeftElement={
+                <Icon
+                  as={<FontAwesome5 name="key" />}
+                  size="sm"
+                  m={2}
+                  _light={{
+                    color: "black",
+                  }}
+                  _dark={{
+                    color: "gray.300",
+                  }}
+                />
+              }
+              variant="outline"
+              placeholder="Sex"
+              _light={{
+                placeholderTextColor: "blueGray.400",
+              }}
+              _dark={{
+                placeholderTextColor: "blueGray.50",
+              }}
+              onValueChange={itemValue => setSex(itemValue)}>
+              <Select.Item label="Male" value="M" />
+              <Select.Item label="Female" value="F" />
+              <Select.Item label="Other" value="O" />
+            </Select>
+          </View>
         </View>
-      </View>
 
-      {/* Button */}
-      <View style={styles.buttonStyle}>
-        <Button style={styles.buttonDesign} onPress={RegistrationHandler()}>
-            REGISTER NOW
-        </Button>
-      </View>
+        {/* Sex Input Field */}
+        <View style={styles.buttonStyleX}>
+          
+          <View style={styles.emailInput}>
+            <Select selectedValue={role}
+              InputLeftElement={
+                <Icon
+                  as={<FontAwesome5 name="key" />}
+                  size="sm"
+                  m={2}
+                  _light={{
+                    color: "black",
+                  }}
+                  _dark={{
+                    color: "gray.300",
+                  }}
+                />
+              }
+              variant="outline"
+              placeholder="Role"
+              _light={{
+                placeholderTextColor: "blueGray.400",
+              }}
+              _dark={{
+                placeholderTextColor: "blueGray.50",
+              }}
+              onValueChange={itemValue => setRole(itemValue)}>
+              <Select.Item label="Patient" value="P" />
+              <Select.Item label="Provider" value="D" />
+            </Select>
+          </View>
+        </View>
 
-    </View>
+        {/* Button */}
+        <View style={styles.buttonStyle}>
+          <Button style={styles.buttonDesign} onPress={RegistrationHandler()}>
+              REGISTER NOW
+          </Button>
+        </View>
+
+      </View>
+    </NativeBaseProvider>
   );
 }
 
-export default () => {
-  return (
-    <NativeBaseProvider>
-     
-        <Signup />
-      
-    </NativeBaseProvider>
-  )
-}
 
 const styles = StyleSheet.create({
   container: {

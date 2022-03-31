@@ -1,11 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Input, NativeBaseProvider, Button, Icon, Box, Image, AspectRatio } from 'native-base';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { Input, NativeBaseProvider, Button } from 'native-base';
 import * as Google from 'expo-auth-session/providers/google'
 
-function Login() { 
+export default function Login({ navigation }) { 
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId: '833113095644-ciah7c3mgv07h6ri46fb48abfagoeo0q.apps.googleusercontent.com'
   });
@@ -26,7 +24,7 @@ function Login() {
     var userList = await fetchUserList();
     for (const user of userList) {
       if (user.email == googleEmail) {
-        navigation.navigate("Home");
+        navigation.navigate("Home", user);
         return;
       }
     }
@@ -56,47 +54,30 @@ function Login() {
 
     return await response.json()
   }
-
-  async function logInButtonHandler() {
-    await promptAsync();
-    await checkExistingUser();
-  }
-
-  const navigation = useNavigation();
   
   return (
-    <View style={styles.container}>
-      <View style={styles.Middle}>
-        <Text style={styles.LoginText}>Login</Text>
-      </View>
-      <View style={styles.text2}>
-        <Text>Don't have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Signup")} ><Text style={styles.signupText}> Sign up</Text></TouchableOpacity>
-      </View>
-
-      {/* Button */}
-      <View style={styles.buttonStyle}>
-        <Button
-          style={styles.buttonDesign}
-          disabled={!request}
-          title="Login"
-          onPress={() => {promptAsync();}}> LOGIN WITH GOOGLE
-        </Button>
-
-
-      </View>
-    </View>
-  );
-}
-
-export default () => {
-  return (
     <NativeBaseProvider>
-     
-        <Login />
-      
+      <View style={styles.container}>
+        <View style={styles.Middle}>
+          <Text style={styles.LoginText}>Login</Text>
+        </View>
+        <View style={styles.text2}>
+          <Text>Don't have an account? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Signup")} ><Text style={styles.signupText}> Sign up</Text></TouchableOpacity>
+        </View>
+
+        {/* Button */}
+        <View style={styles.buttonStyle}>
+          <Button
+            style={styles.buttonDesign}
+            disabled={!request}
+            title="Login"
+            onPress={() => {promptAsync();}}> LOGIN WITH GOOGLE
+          </Button>
+        </View>
+      </View>
     </NativeBaseProvider>
-  )
+  );
 }
 
 
