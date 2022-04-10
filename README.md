@@ -6,7 +6,7 @@ Patients and practitioners will be able to access a (relational) database with u
 
 There will also be a Chat module that allows patients and practitionars to communicate through the platform. This will have its own (document-based) database.
 
-### Branching Method
+## Branching Method
 
 Each module will be developed in its own branch until it is ready for production.
 
@@ -18,7 +18,7 @@ ___
 
 _____
 
-### Django Rest API
+## Django Rest API
 
 To access, server must first be started on the Elastic Beanstalk AWS machine using: 
 
@@ -27,3 +27,13 @@ To access, server must first be started on the Elastic Beanstalk AWS machine usi
 Site can then be accessed with "http://{publicIP}:8000"
 
 > For security purposes, the IP addresses will not be displayed here.
+
+_____
+
+## HealthApp/
+
+Currently, the final stage of this project is to use the APIs and endpoints that are now hosted on AWS to create an application using React Native. This application will allow users to log in with a valid Google account. If the user is already in the database, their information is fetched and displayed to them. They will be allowed to make changes accordingly. Ideally, they will also be able to chat with their PCP. PCPs will be able to see and manage their patients.
+
+If a patient is not registered but has a valid Google email, they will be directed to the registration page.
+
+If a patient does not have a valid Google email, they will not be able to access the application. This is for verification purposes.
