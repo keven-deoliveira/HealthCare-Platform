@@ -29,15 +29,19 @@ export default function Signup({ navigation }) {
             "sex": sex,
             "role": role
         }
-    
-        fetch(api, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
+        try {
+          fetch(api, {
+              method: 'POST',
+              headers: {
+                  'Accept': 'application/json',
+                  'content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+          })
+        } catch (error) {
+          console.log(error)
+          return;
+        }
     }
 
   return (
@@ -149,7 +153,7 @@ export default function Signup({ navigation }) {
           </View>
         </View>
 
-        {/* Sex Input Field */}
+        {/* Role Input Field */}
         <View style={styles.buttonStyleX}>
           
           <View style={styles.emailInput}>
