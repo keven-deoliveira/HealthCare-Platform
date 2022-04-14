@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Input, NativeBaseProvider, Button } from 'native-base';
+import { NativeBaseProvider, Button } from 'native-base';
 import * as Google from 'expo-auth-session/providers/google'
 
 export default function Login({ navigation }) { 
@@ -23,7 +23,7 @@ export default function Login({ navigation }) {
 
     var userList = await fetchUserList();
     for (const user of userList) {
-      if (user.email == googleEmail) {
+      if ((user.email).toLowerCase() == googleEmail.toLowerCase()) {
         navigation.navigate("Home", user);
         return;
       }
