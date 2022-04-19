@@ -32,8 +32,23 @@ _____
 
 ## HealthApp/
 
-Currently, the final stage of this project is to use the APIs and endpoints that are now hosted on AWS to create an application using React Native. This application will allow users to log in with a valid Google account. If the user is already in the database, their information is fetched and displayed to them. They will be allowed to make changes accordingly. Ideally, they will also be able to chat with their PCP. PCPs will be able to see and manage their patients.
+The final stage of this project is to use the APIs and endpoints that are now hosted on AWS to create an application using React Native. This application will allow users to log in with a valid Google account. If the user is already in the database, their information is fetched and displayed to them. They will be allowed to make changes accordingly. Ideally, they will also be able to chat with their PCP. PCPs will be able to see and manage their patients.
 
 If a patient is not registered but has a valid Google email, they will be directed to the registration page.
 
 If a patient does not have a valid Google email, they will not be able to access the application. This is for verification purposes.
+
+### Login Page
+![Login](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0550.PNG)
+
+### Registration Page
+![Registration](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0551.PNG)
+
+### Google Sign In
+![Google Sign in](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0552.PNG)
+
+### Patient View
+![Paitent View](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0553.PNG)
+
+### Provider View
+![Provider View](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0554.PNG)
