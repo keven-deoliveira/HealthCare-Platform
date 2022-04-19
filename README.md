@@ -15,7 +15,6 @@ ___
 ### Tentative Relational Database Schema
 
 ![Image](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/HealthCare%20Platform%20Schema%20Design%201%20-%20ERD%20with%20colored%20entities%20(UML%20notation).png)
-
 _____
 
 ## Django Rest API
@@ -39,16 +38,16 @@ If a patient is not registered but has a valid Google email, they will be direct
 If a patient does not have a valid Google email, they will not be able to access the application. This is for verification purposes.
 
 ### Login Page
-![Login](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0550.PNG)
+<img src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0550.PNG" data-canonical-src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0550.PNG" width="300" height="600" />
 
 ### Registration Page
-![Registration](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0551.PNG)
+<img src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0551.PNG" data-canonical-src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0551.PNG" width="300" height="600" />
 
 ### Google Sign In
-![Google Sign in](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0552.PNG)
+<img src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0552.PNG" data-canonical-src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0552.PNG" width="300" height="600" />
 
 ### Patient View
-![Paitent View](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0553.PNG)
+<img src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0553.PNG" data-canonical-src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0553.PNG" width="300" height="600" />
 
 ### Provider View
-![Provider View](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0554.PNG)
+<img src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0554.PNG" data-canonical-src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0554.PNG" width="300" height="600" />
