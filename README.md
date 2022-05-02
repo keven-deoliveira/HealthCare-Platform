@@ -51,3 +51,222 @@ If a patient does not have a valid Google email, they will not be able to access
 
 ### Provider View
 <img src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0554.PNG" data-canonical-src="https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/IMG-0554.PNG" width="300" height="600" />
+
+____
+
+## API Usage
+
+### User List
+
+Returns JSON containing all users and all their data.
+
+* **URL**
+
+  /users/
+
+* **Method:**
+
+  `GET`
+  
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    
+    `
+    [{"userID":"f24ade1450764e24a67487a36432251b","firstName":"Keven","lastName":"DeOliveira","DoB":"07/18/2000","address":"1173 Commonwealth Ave","email":" ","pcp":"n/a","sex":"M","role":["P","D"]},{"userID":"9753d7c86acb4947ac4304650e96d90c","firstName":"Loki","lastName":"TheFish","DoB":"12/1/21","address":"1173 Commonwealth Ave","email":" ","pcp":"n/a","sex":"M","role":["P"]},{"userID":"3f7d25b0bcd04af396d569109ad1181a","firstName":"Test","lastName":"User","DoB":"08/20/1995","address":"nowehre","email":" ","pcp":"something","sex":"O","role":["P"]}]`
+    
+* **Sample Call:**
+
+  ```javascript
+    const response = await fetch ('http://52.70.229.148:8000/users/', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application.json'
+        },
+      });
+  ```
+  
+### Show User
+
+Returns JSON data about a single user.
+
+* **URL**
+
+  /users/userID
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `userID=[string]`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    
+    `
+    {
+    "userID": "f24ade1450764e24a67487a36432251b",
+    "firstName": "Keven",
+    "lastName": "DeOliveira",
+    "DoB": "07/18/2000",
+    "address": "1173 Commonwealth Ave",
+    "email": " ",
+    "pcp": "n/a",
+    "sex": "M",
+    "role": [
+        "P",
+        "D"
+    ]
+}
+    `
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "User doesn't exist" }`
+
+* **Sample Call:**
+
+  ```javascript
+    const response = await fetch ('http://52.70.229.148:8000/users/12345', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application.json'
+        },
+      });
+  ```
+  
+### Add User
+
+Adds user information to database.
+
+* **URL**
+
+  /users/
+
+* **Method:**
+
+  `POST`
+  
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    
+    `Operation Status String`
+
+* **Sample Call:**
+
+  ```javascript
+  (async () => {
+  const rawResponse = await fetch('http://52.70.229.148:8000/users/', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "userID": "12345",
+      "firstName": "John",
+      "lastName": "Doe",
+      "DoB": "01/31/1999",
+      "address": "12 Street Avenue",
+      "email": "johndoe@gmail.com",
+      "pcp": "Dr. Jane",
+      "sex": "Male",
+      "role": "P"
+    })
+  });
+  const content = await rawResponse.json();
+
+  console.log(content);
+  })();
+  
+### Update User
+
+Updates all or some of information of specific user
+
+* **URL**
+
+  /users/userID
+
+* **Method:**
+
+  `PUT` OR `PATCH`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `userID=[string]`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    
+    `
+    Operation Status String
+    `
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "User doesn't exist" }`
+
+* **Sample Call:**
+
+  ```javascript
+    const response = await fetch ('http://52.70.229.148:8000/users/12345', {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application.json'
+        },
+        body: JSON.stringify({
+          "userID": "12345",
+          "firstName": "John",
+          "lastName": "Doe",
+          "DoB": "01/31/1999",
+          "address": "12 Street Avenue",
+          "email": "johndoe@gmail.com",
+          "pcp": "Dr. Jane",
+          "sex": "Male",
+          "role": "P"
+       })
+    });
+  });
+  ```
