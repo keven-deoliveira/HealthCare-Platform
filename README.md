@@ -6,6 +6,18 @@ Patients and practitioners will be able to access a (relational) database with u
 
 There will also be a Chat module that allows patients and practitionars to communicate through the platform. This will have its own (document-based) database.
 
+## Directory Breakdown
+
+`.github/workflows` : Github Actions directoy
+
+`HealthApp` : Folders and files for the React Native mobile application
+
+`Modules` : Python API modules for device and chat information (past assignment)
+
+`images` : Relevant images
+
+`mysite` : Django Rest Framework directory containing code that builds REST APIs
+
 ## Branching Method
 
 Each module will be developed in its own branch until it is ready for production.
