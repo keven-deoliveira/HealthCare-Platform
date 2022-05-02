@@ -6,6 +6,45 @@ Patients and practitioners will be able to access a (relational) database with u
 
 There will also be a Chat module that allows patients and practitionars to communicate through the platform. This will have its own (document-based) database.
 
+## Table of Contents
+  <ol>
+    <li>
+      <a href="#healthcare-platform">About This Project</a>
+    </li>
+    <li>
+      <a href="#directory-breakdown">Directory Breakdown</a>
+    </li>
+    <li>
+      <a href="#branching-method">Branching Method</a>
+    </li>
+    <li>
+      <a href="#tentative-relational-database-schema">Tentative Schema</a>
+    </li>
+    <li>
+      <a href="#django-rest-api">Django Rest Api</a>
+    </li>
+    <li>
+      <a href="#healthapp">HealthApp</a>
+      <ul>
+        <li><a href="#login-page">Login Page</a></li>
+        <li><a href="#registration-page">Registration Page</a></li>
+        <li><a href="#google-sign-in">Google Sign In</a></li>
+        <li><a href="#patient-view">Patient View</a></li>
+        <li><a href="#provider-view">Provider View</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#api-usage">Api Usage</a>
+      <ul>
+        <li><a href="#user-list">User List</a></li>
+        <li><a href="#show-user">Show User</a></li>
+        <li><a href="#add-user">Add User</a></li>
+        <li><a href="#update-user">Update User</a></li>
+        <li><a href="#delete-user">Delete User</a></li>
+      </ul>
+    </li>
+  </ol>
+
 ## Directory Breakdown
 
 `.github/workflows` : Github Actions directoy
@@ -24,7 +63,7 @@ Each module will be developed in its own branch until it is ready for production
 
 ___
 
-### Tentative Relational Database Schema
+## Tentative Relational Database Schema
 
 ![Image](https://github.com/keven-deoliveira/HealthCare-Platform/blob/main/images/HealthCare%20Platform%20Schema%20Design%201%20-%20ERD%20with%20colored%20entities%20(UML%20notation).png)
 _____
@@ -282,4 +321,50 @@ Updates all or some of information of specific user
        })
     });
   });
+  ```
+
+### Delete User
+
+Deletes given user.
+
+* **URL**
+
+  /users/userID
+
+* **Method:**
+
+  `DELETE`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `userID=[string]`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    
+    `Operation Status String`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "User doesn't exist" }`
+
+* **Sample Call:**
+
+  ```javascript
+    const response = await fetch ('http://52.70.229.148:8000/users/12345', {
+        method: 'DELETE',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application.json'
+        },
+      });
   ```
