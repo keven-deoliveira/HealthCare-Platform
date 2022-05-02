@@ -82,7 +82,8 @@ Returns JSON containing all users and all their data.
     **Content:** 
     
     `
-    [{"userID":"f24ade1450764e24a67487a36432251b","firstName":"Keven","lastName":"DeOliveira","DoB":"07/18/2000","address":"1173 Commonwealth Ave","email":" ","pcp":"n/a","sex":"M","role":["P","D"]},{"userID":"9753d7c86acb4947ac4304650e96d90c","firstName":"Loki","lastName":"TheFish","DoB":"12/1/21","address":"1173 Commonwealth Ave","email":" ","pcp":"n/a","sex":"M","role":["P"]},{"userID":"3f7d25b0bcd04af396d569109ad1181a","firstName":"Test","lastName":"User","DoB":"08/20/1995","address":"nowehre","email":" ","pcp":"something","sex":"O","role":["P"]}]`
+[{"userID":"f24ade1450764e24a67487a36432251b","firstName":"Keven","lastName":"DeOliveira","DoB":"07/18/2000","address":"","email":" ","pcp":"n/a","sex":"M","role":["P","D"]},{"userID":"9753d7c86acb4947ac4304650e96d90c","firstName":"Loki","lastName":"TheFish","DoB":"12/1/21","address":"","email":" ","pcp":"n/a","sex":"M","role":["P"]},{"userID":"3f7d25b0bcd04af396d569109ad1181a","firstName":"Test","lastName":"User","DoB":"08/20/1995","address":"nowehre","email":" ","pcp":"something","sex":"O","role":["P"]}]
+    `
     
 * **Sample Call:**
 
